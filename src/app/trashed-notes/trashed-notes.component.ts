@@ -14,10 +14,10 @@ export class TrashedNotesComponent implements OnInit {
   public notes: Note[] = [];
 
 
-  constructor(private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar ) { }
+  constructor(private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-this.mytoken = localStorage.getItem('token');
+    this.mytoken = localStorage.getItem('token');
     this.getNotes();
   }
 
@@ -45,7 +45,7 @@ this.mytoken = localStorage.getItem('token');
   }
 
   sendToArchive(note) {
-    var newNote = {
+    const newNote = {
 
       ...note,
       archive: true
@@ -69,11 +69,10 @@ this.mytoken = localStorage.getItem('token');
       this.snackBar.open('error', 'error to retrieve notes', { duration: 2000 });
     };
   }
-  restore(note)
-  {
-    var newNote = {
+  restore(note) {
+    const newNote = {
       ...note,
-      inTrash: false,
+      intrash: false,
 
     };
     console.log(newNote);
@@ -87,4 +86,4 @@ this.mytoken = localStorage.getItem('token');
         console.log('Error while restoring note::->', error);
       });
   }
-  }
+}

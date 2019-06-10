@@ -62,7 +62,7 @@ export class NoteComponent implements OnInit {
     this.getNotes();
     this.createNoteForm = this.formBuilder.group({
       title: [''],
-      description: ['']
+      discription: ['']
     });
   }
 
@@ -82,7 +82,7 @@ export class NoteComponent implements OnInit {
     if (this.createNoteForm.invalid) {
       return;
     }
-    if (this.createNoteForm.value.title === '' && this.createNoteForm.value.description === '') {
+    if (this.createNoteForm.value.title === '' && this.createNoteForm.value.discription === '') {
       return;
     }
     console.log(this.mytoken);

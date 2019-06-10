@@ -43,14 +43,12 @@ export class ViewNoteComponent implements OnInit {
     });
   }
   deleteNote(note) {
-    var newNote = {
+    const newNote = {
       ...note,
-      inTrash: true,
+      intrash: true,
     };
     this.noteService.updateNote(newNote).subscribe(response => {
-      this.snackBar.open('Sent to Trash ', 'OK', {
-        duration: 3000,
-      });
+      this.snackBar.open('Sent to Trash ', 'OK', {   duration: 3000 });
       this.getNotes();
     },
       (error) => {
@@ -73,10 +71,10 @@ export class ViewNoteComponent implements OnInit {
       });
   }
   moveToPin(note) {
-    var newNote = {
+    const newNote = {
 
       ...note,
-      'pinned': true
+      pinned: true
     };
     this.noteService.updateNote(newNote).subscribe(response => {
       this.snackBar.open('Pinned', 'OK', {

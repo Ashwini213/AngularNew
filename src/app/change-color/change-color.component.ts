@@ -17,7 +17,7 @@ export class ChangeColorComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeColor(color){
+  changeColor(color) {
     this.newNote.color = color;
     const note = this.newNote;
     const data = {note};

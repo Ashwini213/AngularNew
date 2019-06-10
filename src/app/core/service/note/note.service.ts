@@ -14,7 +14,7 @@ export class NoteService {
   constructor(private httpUtil: HttpService, private router: Router, public snackBar: MatSnackBar) { }
 
   retrieveNotes(token): Observable<any> {
-    var httpheaders = {
+    const httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
         'token': token
@@ -24,39 +24,35 @@ export class NoteService {
   }
 
   createNote(note): Observable<any> {
-    var token = localStorage.getItem('token');
-    var httpheaders = {
+    const token = localStorage.getItem('token');
+    const httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'token': token
       })
     };
-    return this.httpUtil.postServiceForNoteCreate(environment.note_url + 'note/' + token, httpheaders, note);
+    return this.httpUtil.postServiceForNoteCreate(environment.note_url + token, httpheaders, note);
   }
-  updateNote(note)
-  {
-    var token = localStorage.getItem('token');
-    var httpheaders = {
+  updateNote(note) {
+    const token = localStorage.getItem('token');
+    const httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'token': token
+         token
       })
     };
-    return this.httpUtil.putServiceForNoteUpdate(environment.note_url + 'note/' + token , note, httpheaders);
+    return this.httpUtil.putServiceForNoteUpdate(environment.note_url + token, note, httpheaders);
   }
 
-  deleteNote(note)
-  {
-    var token = localStorage.getItem('token');
-    var httpheaders = {
+  deleteNote(noteId) {
+    const token = localStorage.getItem('token');
+    const httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'token': token
+        token
       })
     };
-    return this.httpUtil.deleteServiceForNoteDelete(environment.note_url + 'note/' + token ,  httpheaders);
-}
-
-
+    return this.httpUtil.deleteServiceForNoteDelete(environment.note_url + noteId ,  httpheaders);
+  }
 
 }
